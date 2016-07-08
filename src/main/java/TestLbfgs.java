@@ -42,9 +42,7 @@ public class TestLbfgs {
 				double[] xArray = x.getPointer().getDoubleArray(0, dim);
 				double[] gradientAt = function.gradientAt(xArray);
 				Pointer gPointer = g.getPointer();
-				for (int i = 0; i < gradientAt.length; i++) {
-					gPointer.setDouble(i, gradientAt[i]);
-				}
+				gPointer.write(0, gradientAt, 0, gradientAt.length);
 				return function.valueAt(xArray);
 			}
 		};
